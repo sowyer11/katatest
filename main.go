@@ -51,8 +51,7 @@ func main() {
 
 	pn := strings.Fields(input)
 	if len(pn) != 3 {
-		fmt.Println("Неправильный формат")
-		return
+		panic("Неправильный формат")
 	}
 
 	var state string
@@ -69,8 +68,7 @@ func main() {
 		}
 	} else {
 		if romanToArabic(pn[2]) > 0 {
-			fmt.Println("Разные виды чисел")
-			return
+			panic("Разные виды чисел")
 		}
 	}
 
@@ -124,8 +122,7 @@ func main() {
 			if first-second > 0 {
 				failure = arabicToRoman(first - second)
 			} else {
-				fmt.Println("Отрицательное число")
-				return
+				panic("Отрицательное число")
 			}
 		} else {
 			success = first - second
@@ -138,8 +135,7 @@ func main() {
 		}
 	case "/":
 		if second == 0 {
-			fmt.Println("Деление на ноль")
-			return
+			panic("Деление на ноль")
 		}
 		if state == "roman" {
 			failure = arabicToRoman(first / second)
@@ -147,6 +143,7 @@ func main() {
 			success = first / second
 		}
 	default:
+		
 		fmt.Println("Неверный оператор")
 		return
 	}
